@@ -13,9 +13,9 @@ export default function Test({match}) {
   return (
     <div>
 
-      <Link to={`${match.url}/unsorted`}>unsorted</Link>
+      <Link to={match.url + "/unsorted"}>unsorted</Link>
 
-      <Route exact path={`${match.url}/:spec`} component={Testsub}/>
+      <Route exact path={match.url + "/:spec"} component={Testsub}/>
 
       <p>test</p>
       match.params.id: {match.params.id}

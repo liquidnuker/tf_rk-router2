@@ -23,18 +23,16 @@ function Contact({match}) {
 }
 
 function ContactMain({match}) {
+  const url2 = "jfkdjkfdkfkjf";
   return (
     // ok
     <div>     
-      <p>contact</p>
+      <Link to={match.url + "/" + url2}>link1</Link>
 
-      <Link to={`${match.url}/person-1`}>
-          person1
-      </Link>
+      <Link to={match.url + "/person-1"}>person1</Link>
+      <Route path={match.url + "/:id"} component={Contact}/>
 
-      <Route exact path={`${match.url}/:id`} component={Contact}/>
-
-    {/* optional */}
+      {/* optional */}
       {/*<Route exact path={match.url} render={() => (
       <h3>Contact main</h3>
       )}/>*/}
@@ -42,7 +40,7 @@ function ContactMain({match}) {
   );
 }
 
-function RouterMain(props) {
+function RouterLinks(props) {
   return (
     <Router>
     <div>
@@ -66,6 +64,6 @@ function RouterMain(props) {
 }
 
 ReactDOM.render(
-  <RouterMain />,
+  <RouterLinks />,
   document.getElementById('root')
 );
