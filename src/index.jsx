@@ -1,12 +1,7 @@
-import {HashRouter as Router, Route, Link} from 'react-router-dom'
+import {HashRouter as Router, Route, Link} from 'react-router-dom';
 
-function Home(props) {
-  return (
-    <div>
-    <h2>Home_</h2>
-  </div>
-  );
-}
+import Home from "./Home_wrap.jsx";
+import Test from "./Test_wrap.jsx";
 
 function About(props) {
   return (
@@ -14,32 +9,6 @@ function About(props) {
     <div>     
       <Link to="/">Home</Link>             
     </div>  
-  );
-}
-
-function Testsub({match}) {
-  return (
-    <div>
-      <p>match.params.spec: {match.params.spec}</p>
-      <p>match.url: {match.url}</p>      
-    </div>
-  );
-}
-
-function Test({match}) {
-  return (
-    <div>
-
-      <Link to={`${match.url}/unsorted`}>
-          unsorted
-      </Link>
-
-      <Route exact path={`${match.url}/:spec`} component={Testsub}/>
-
-      <p>test</p>
-      match.params.id: {match.params.id}
-      <p>match.url: {match.url}</p>
-    </div>
   );
 }
 
