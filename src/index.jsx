@@ -1,11 +1,13 @@
-import {HashRouter as Router, Route, Link} from 'react-router-dom';
+import {HashRouter as Router, 
+  Route, 
+  Link,
+Switch, Redirect} from 'react-router-dom';
 
 import Home from "./Home_wrap.jsx";
 import Test from "./Test_wrap.jsx";
 
 function About(props) {
   return (
-    // ok
     <div>     
       <Link to="/">Home</Link>             
     </div>  
@@ -46,6 +48,14 @@ function ContactMain({match}) {
   );
 }
 
+function NoMatch({location}) {
+  return (
+    <div>
+    {location.pathname} not found
+  </div>
+  );
+}
+
 function RouterLinks(props) {
   return (
     <Router>
@@ -55,14 +65,22 @@ function RouterLinks(props) {
         <li><Link to="/about">About</Link></li>
         <li><Link to="/contact">Contact</Link></li>
         <li><Link to="/test/link1">test</Link></li>
+
+        <li><Link to="/1111">redirect</Link></li>
+        <li><Link to="/tzzzt/lzzzk1">tezzzst</Link></li>
       </ul>
 
       <hr/>
 
+      <Switch>
       <Route exact path="/" component={Home}/>
       <Route path="/about" component={About}/>
       <Route path="/contact" component={ContactMain}/>
       <Route path="/test/link1" component={Test}/>
+
+      <Redirect from="/1111" to="/about"/>
+      <Route component={NoMatch}/>
+      </Switch>
       
     </div>
   </Router>
