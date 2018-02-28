@@ -1,1 +1,1 @@
-webpackJsonp([1],{56:function(e,t,n){"use strict";function c(e){return React.createElement("div",null,React.createElement("h2",null,"Home_"))}Object.defineProperty(t,"__esModule",{value:!0}),t.default=c}});
+webpackJsonp([1],{143:function(e,t,n){"use strict";function c(e){return React.createElement("div",null,React.createElement("h2",null,"Homepage_"))}Object.defineProperty(t,"__esModule",{value:!0}),t.default=c}});
