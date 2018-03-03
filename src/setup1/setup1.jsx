@@ -1,10 +1,6 @@
 // setup1
 // ======================================================/
-
-import {HashRouter as Router, 
-  Route, 
-  Link,
-Switch, Redirect} from 'react-router-dom';
+import {HashRouter as Router, Route, Link, Switch, Redirect} from 'react-router-dom';
 
 import Home from "./Home_wrap.jsx";
 import Test from "./Test_wrap.jsx";

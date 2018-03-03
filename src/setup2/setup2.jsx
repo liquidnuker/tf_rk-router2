@@ -4,14 +4,8 @@ import {HashRouter as Router, Route, Link, Switch, Redirect} from 'react-router-
 
 // route components
 // ======================================================/
-function Home({match}) {
-  return (
-    <div>    
-      <h2>Home</h2> 
-      <p>match.url: {match.url}</p>
-    </div>  
-  );
-}
+import Home from "./Home.jsx";
+import ParamTester1 from "./ParamTester1.jsx";
 
 function About({match}) {
   return (
@@ -82,15 +76,24 @@ function ContactSub2({match}) {
   );
 }
 
+// todo: add 404 route
+function NoMatch({match}) {
+  return (
+    <div>
+      <p>{match.url} not found</p>
+    </div>
+  );
+}
+
 // route config
 // ======================================================/
 const routes = [
-  { path: '/home',
-    component: Home
-  },
   { path: '/about',
     component: About
   },
+  { path: '/pt/:item',
+    component: ParamTester1
+  }, 
   { path: '/projects',
     component: Projects,
     routes: [
@@ -127,15 +130,25 @@ const RouteConfigExample = () => (
     <div>
       <p>Main Linker</p>
       <ul>
-        <li><Link to="/home">Home</Link></li>
+        <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/projects">Projects</Link></li>
         <li><Link to="/contact">Contact</Link></li>
+
+        {<li><Link to="/pt/itemName1">ParamTester1</Link></li>}
       </ul>
 
       {routes.map((route, i) => (
         <RouteWithSubRoutes key={i} {...route}/>
       ))}
+
+      
+      {/*for homepage exact path, redirect*/}
+      <Switch>
+        <Route exact path="/" component={Home}/>
+        <Redirect from="/1111" to="/"/>
+      </Switch>
+
     </div>
   </Router>
 )
