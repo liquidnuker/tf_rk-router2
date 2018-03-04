@@ -138,15 +138,15 @@ const RouteConfigExample = () => (
         {<li><Link to="/pt/itemName1">ParamTester1</Link></li>}
       </ul>
 
-      {routes.map((route, i) => (
-        <RouteWithSubRoutes key={i} {...route}/>
-      ))}
-
-      
-      {/*for homepage exact path, redirect*/}
       <Switch>
+        {routes.map((route, i) => (
+        <RouteWithSubRoutes key={i} {...route}/>
+        ))}
+
+        {/*for homepage exact path, redirect, 404*/}
         <Route exact path="/" component={Home}/>
         <Redirect from="/1111" to="/"/>
+        <Route component={NoMatch}/>
       </Switch>
 
     </div>
