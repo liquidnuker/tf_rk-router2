@@ -25,9 +25,15 @@ function Projects({ routes, match }) {
         <li><Link to="/projects/subroute1">SubRoute1</Link></li>
       </ul>
 
+      <switch>
       {routes.map((route, i) => (
         <RouteWithSubRoutes key={i} {...route}/>
       ))}
+
+      {/*temp redirect for invalid SubRoute. todo: SubRoute404*/}
+      <Redirect to="/projects" />
+      </switch>
+      
     </div>
     )
 }
@@ -76,11 +82,10 @@ function ContactSub2({match}) {
   );
 }
 
-// todo: add 404 route
-function NoMatch({match}) {
+function Global404({match}) {
   return (
     <div>
-      <p>{match.url} not found</p>
+      <p>global404</p>
     </div>
   );
 }
@@ -99,7 +104,7 @@ const routes = [
     routes: [
       { path: '/projects/subroute1',
         component: ProjectSub1
-      },
+      }
     ]
   },
   { path: '/contact',
@@ -112,7 +117,7 @@ const routes = [
         component: ContactSub2
       }
     ]
-  }
+  },
 ];
 
 // wrap <Route> and use this everywhere instead, then when
@@ -143,10 +148,10 @@ const RouteConfigExample = () => (
         <RouteWithSubRoutes key={i} {...route}/>
         ))}
 
-        {/*for homepage exact path, redirect, 404*/}
+        {/*for homepage exact path, redirect, global404*/}
         <Route exact path="/" component={Home}/>
         <Redirect from="/1111" to="/"/>
-        <Route component={NoMatch}/>
+        <Route component={Global404}/>
       </Switch>
 
     </div>
